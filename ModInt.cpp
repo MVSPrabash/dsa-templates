@@ -4,6 +4,16 @@ using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
 
+template<class T>
+constexpr T power(T a, u64 b, T res = 1) {
+    while (b > 0) {
+        if (b & 1) res *= a;
+        a *= a;
+        b >>= 2;
+    }
+    return res;
+}
+
 template<u32 P>
 class ModInt {
 public:
@@ -21,22 +31,78 @@ public:
 
     constexpr u32 val() const { return x; }
 
-    friend constexpr bool operator==(const ModInt&, const ModInt&) = default;
+    constexpr ModInt inv() const {
+        return power(*this, mod() - 2);
+    }
 
-    friend constexpr ModInt& operator+=(ModInt& lhs, const ModInt& rhs) {
-        lhs.x += rhs.x;
-        lhs.x %= mod();
-        return lhs;
+    constexpr ModInt& operator+=(const ModInt& rhs) {
+        x += rhs.val();
+        if (x >= mod()) x -= mod();
+        return *this;
+    }
+
+    constexpr ModInt& operator-=(const ModInt& rhs) {
+        int xx = x - rhs.val();
+        if (xx < 0) xx += mod();
+        x = xx;
+        return *this;
+    }
+
+    constexpr ModInt& operator*=(const ModInt& rhs) {
+        x = u64(x) * rhs.x % mod();
+        return *this;
+    }
+
+    constexpr ModInt& operator/=(const ModInt& rhs) {
+        return *this *= rhs.inv();
+    }
+
+    friend constexpr bool operator==(const ModInt& lhs, const ModInt& rhs) {
+        return lhs.val() == rhs.val();
+    }
+
+    friend constexpr ModInt operator++(const ModInt& z) {
+        return ModInt(z.val() + 1);
+    }
+
+    friend constexpr ModInt operator--(const ModInt& z) {
+        return ModInt(z.val() - 1);
+    }
+
+    friend constexpr ModInt operator+(ModInt lhs, const ModInt& rhs) {
+        return lhs += rhs;
+    }
+
+    friend constexpr ModInt operator-(ModInt lhs, const ModInt& rhs) {
+        return lhs -= rhs;
+    }
+
+    friend constexpr ModInt operator*(ModInt lhs, const ModInt& rhs) {
+        return lhs *= rhs;
+    }
+
+    friend constexpr ModInt operator/(ModInt lhs, const ModInt& rhs) {
+        return lhs /= rhs;
+    }
+
+    constexpr ModInt operator-() const {
+        return ModInt((x == 0 ? 0 : mod() - x));
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const ModInt& z) {
+        os << z.val();
+        return os;
+    }
+
+    friend std::istream& operator>>(std::istream& is, ModInt& z) {
+        i64 x;
+        is >> x;
+        z = x;
+        return is;
     }
 private:
     u32 x;
 };
 
-using Z = ModInt<13>;
+using Z = ModInt<998244353>;
 
-// Tests
-int main() {
-    Z a = 1, b = 2;
-
-    std::cout << std::boolalpha << (a == b) << std::endl;
-}
