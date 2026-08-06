@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 
-using i64 = int64_t;
-using u64 = uint64_t;
-using u32 = uint32_t;
+using i64 = long long;
+using u64 = unsigned long long;
+using u32 = unsigned;
 using i128 = __int128;
 using u128 = unsigned __int128;
 
