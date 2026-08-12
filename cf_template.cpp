@@ -4,6 +4,8 @@ using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
 
+namespace rgs = std::ranges;
+
 void solve() {
     
 }
