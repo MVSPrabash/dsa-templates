@@ -9,7 +9,7 @@ constexpr T power(T a, u64 b, T res = 1) {
     while (b > 0) {
         if (b & 1) res *= a;
         a *= a;
-        b >>= 2;
+        b >>= 1;
     }
     return res;
 }
