@@ -1,0 +1,92 @@
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"CodeForces Template": {
+		"prefix": "cftemplate",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"",
+			"using i64 = long long;",
+			"using u64 = unsigned long long;",
+			"using u32 = unsigned;",
+			"",
+            "namespace rgs = std::ranges;",
+            "",
+			"void solve() {",
+			"\t$0",
+			"}",
+			"",
+			"int main() {",
+			"\tstd::ios::sync_with_stdio(false);",
+			"\tstd::cin.tie(nullptr);",
+			"\t",
+			"\tint t;",
+            "\tstd::cin >> t;",
+            "\t",
+			"\twhile (t--) {",
+			"\t\tsolve();",
+            "\t}",
+			"}",
+		]
+	},
+	"CP Template" : {
+		"prefix": "cptemplate",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"",
+			"using i64 = long long;",
+			"using u64 = unsigned long long;",
+			"using u32 = unsigned;",
+			"",
+            "namespace rgs = std::ranges;",
+            "",
+			"int main() {",
+			"\tstd::ios::sync_with_stdio(false);",
+			"\tstd::cin.tie(nullptr);",
+            "\t",
+			"\t$0",
+			"}",
+		]
+	},
+    "Leetcode Template": {
+        "prefix": "lctemplate",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "",
+            "using i64 = long long;",
+            "using u64 = unsigned long long;",
+            "using u32 = unsigned;",
+            "",
+            "namespace rgs = std::ranges;",
+            "",
+            "class Solution {",
+            "public:",
+            "\t$0",
+            "};",
+            "",
+        ]
+    },
+    "Leetcode ListNode struct": {
+        "prefix": "lclistnode",
+        "body": [
+            "struct ListNode {",
+            "\tint val;",
+            "\tListNode *next;",
+            "\tListNode() : val(0), next(nullptr) {}",
+            "\tListNode(int x) : val(x), next(nullptr) {}",
+            "\tListNode(int x, ListNode *next) : val(x), next(next) {}",
+            "};",
+        ]
+    },
+}
