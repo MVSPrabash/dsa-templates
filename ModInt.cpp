@@ -61,12 +61,12 @@ public:
         return lhs.val() == rhs.val();
     }
 
-    friend constexpr ModInt operator++(const ModInt& z) {
-        return ModInt(z.val() + 1);
+    constexpr ModInt& operator++() {
+        return *this += 1;
     }
 
-    friend constexpr ModInt operator--(const ModInt& z) {
-        return ModInt(z.val() - 1);
+    constexpr ModInt& operator--() {
+        return *this -= 1;
     }
 
     friend constexpr ModInt operator+(ModInt lhs, const ModInt& rhs) {
