@@ -37,6 +37,8 @@
 			"\twhile (t--) {",
 			"\t\tsolve();",
             "\t}",
+            "\t",
+            "\treturn 0;"
 			"}",
 		]
 	},
@@ -56,6 +58,8 @@
 			"\tstd::cin.tie(nullptr);",
             "\t",
 			"\t$0",
+            "\t",
+            "\treturn 0;",
 			"}",
 		]
 	},
