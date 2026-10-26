@@ -118,6 +118,37 @@
             "using Z = ModInt<$0>;",
         ]
     },
+    "Range Frequency Query data structure": {
+        "prefix": "rangefreqquery",
+        "body": [
+            "struct RangeFreqQuery {",
+            "\tstd::map<int, std::vector<int>> mp;",
+            "",
+            "\texplicit",
+            "\tRangeFreqQuery(const std::vector<int>& arr) {",
+            "\t\tfor (int i = 0; i < static_cast<int>(arr.size()); i++) {",
+            "\t\t\tmp[arr[i]].push_back(i);",
+            "\t\t}",
+            "\t}",
+            "",
+            "\tint query(int left, int right, int value) const {",
+            "\t\tif (left > right) return 0;",
+            "",
+            "\t\tauto it = mp.find(value);",
+            "",
+            "\t\tif (it == mp.end()) return 0;",
+            "",
+            "\t\tconst auto& indices = it->second;",
+            "",
+            "\t\treturn static_cast<int>(",
+            "\t\t\trgs::upper_bound(indices, right) -",
+            "\t\t\trgs::lower_bound(indices, left)",
+            "\t\t);",
+            "\t}",
+            "",
+            "};"
+        ]
+    },
 	"CodeForces Template": {
 		"prefix": "cftemplate",
 		"body": [
