@@ -6,17 +6,17 @@ using u32 = unsigned;
 
 namespace rgs = std::ranges;
 
-class RangeFreqQuery {
+struct RangeFreqQuery {
     std::map<int, std::vector<int>> mp;
 
-public:
+    explicit
     RangeFreqQuery(const std::vector<int>& arr) {
         for (int i = 0; i < static_cast<int>(arr.size()); i++) {
             mp[arr[i]].push_back(i);
         }
     }
         
-    int query(int left, int right, int value) {
+    int query(int left, int right, int value) const {
         if (left > right) return 0;
 
         auto it = mp.find(value);
@@ -30,6 +30,7 @@ public:
             rgs::lower_bound(indices, left)
         );
     }
+
 };
 
 // NOTE: using `int` instead of `std::size_t`
